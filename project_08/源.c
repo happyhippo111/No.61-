@@ -9,9 +9,9 @@ void aes_process_arm(const uint8_t key[], const uint8_t subkeys[], uint32_t roun
 	{
 		uint8x16_t block = vld1q_u8(input);
 
-		// AES µ¥ÂÖ¼ÓÃÜ
+		// AES å•è½®åŠ å¯†
 		block = vaeseq_u8(block, vld1q_u8(key));
-		// AESÁĞ»ìºÏ
+		// AESåˆ—æ··åˆ
 		block = vaesmcq_u8(block);
 
 		
@@ -26,7 +26,7 @@ void aes_process_arm(const uint8_t key[], const uint8_t subkeys[], uint32_t roun
 		}
 
 		block = vaeseq_u8(block, vld1q_u8(subkeys + (rounds - 2) * 16));
-		// ±ÈÌØÒì»ò
+		// æ¯”ç‰¹å¼‚æˆ–
 		block = veorq_u8(block, vld1q_u8(subkeys + (rounds - 1) * 16));
 
 		vst1q_u8(output, block);
@@ -62,8 +62,8 @@ int main(int argc, char* argv[])
 	 
 	uint8_t output[19] = { 0 };
 
-	aes_process_arm((const uint8_t*)key, (const uint8_t*)subkeys, 10, input, output + 3, 16);
-	printf("Output: ");
+	aes_arm((const uint8_t*)key, (const uint8_t*)subkeys, 10, input, output + 3, 16);
+	printf("è¾“å‡º: ");
 	for (unsigned int i = 3; i < 19; ++i)
 		printf("%02X ", output[i],'/n');
 
