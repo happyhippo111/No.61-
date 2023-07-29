@@ -6,11 +6,11 @@
 生日攻击过程如下：<br>
 >1.	构造消息：<br>
 从可能的输入空间中生成两个随机消息，这两个消息需要满足相同的hash要求。<br>
-2.	计算hash：<br>
+>2.	计算hash：<br>
 每次对这两个不同的消息进行SM3算法的运算，生成相应的hash值。<br>
-3.	查找碰撞：<br>
+>3.	查找碰撞：<br>
 通过比较看这两个不同的随机消息的hash值的前n位是否相同，如果相同，则攻击成功；如果不同，则攻击失败，需重新生成两个随机消息，并再进行2、3步。<br>
-注：改变n即可实现前任意位的生日攻击。birthdayAttack(n)这里输入的数实现的是前几个字节的碰撞，实际上是实现了前四倍输入的数位bit的碰撞，例如令n=8实际上是实现了前32位bit的碰撞。<br>
+>注：改变n即可实现前任意位的生日攻击。birthdayAttack(n)这里输入的数实现的是前几个字节的碰撞，实际上是实现了前四倍输入的数位bit的碰撞，例如令n=8实际上是实现了前32位bit的碰撞。<br>
 
 实现方式：本项目用c++完成。<br>
 运行结果：<br>
@@ -34,23 +34,24 @@
 >uint8x16_t vaeseq_u8(uint8x16_t data, uint8x16_t key);<br>
 >// 执行AES混淆列（mix columns）<br>
 >uint8x16_t vaesmcq_u8(uint8x16_t data);<br>
+使用C语言编程完成
 
 ## 🎖️project09 AES / SM4 software implementation✔️
 
 ### AES实现✔️
 
-![IMG_2377(20230727-004119)](C:\Users\86130\Desktop\IMG_2377(20230727-004119).PNG)
-
-
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/AES/IMG_2377(20230727-004119).PNG)
+实现方式:<br>
+根据上述流程图使用C++完成<br>
 
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
 
-算法流程图：![算法流程图](E:\创新创业实践\代码仓\Project_09\SM4\算法流程图.png)
+算法流程图：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/SM4/%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 
 解密变换与加密变换结构相同，不同的仅是轮密钥的使用顺序。(解密时，使用轮密钥序 rk31,rk30,⋯,rk0)<br>
-运行结果：![运行结果](E:\创新创业实践\代码仓\Project_09\SM4\运行结果.jpg)
-
+运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/SM4/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
+实现方式：使用C++实现
 
 
 
