@@ -1,0 +1,11 @@
+﻿  project1.cpp
+E:\project1\project1\project1.cpp(88,33): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project1\project1\project1.cpp(163,2): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project1\project1\project1.cpp(238,31): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project1\project1\project1.cpp(251,59): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\project1\project1\project1.cpp(298,6): warning C4101: “n”: 未引用的局部变量
+  project1.vcxproj -> E:\project1\x64\Debug\project1.exe
