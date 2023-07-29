@@ -43,8 +43,7 @@
 
 
 
-运行结果：[运行测试]([E:\创新创业实践\代码仓\Project_09\AES\运行测试.png](https://github.com/happyhippo111/No.61-/blob/main/Project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png))
-
+运行结果：[![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
 
 算法流程图：![算法流程图](E:\创新创业实践\代码仓\Project_09\SM4\算法流程图.png)
