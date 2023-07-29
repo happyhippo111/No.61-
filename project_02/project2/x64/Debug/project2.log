@@ -1,0 +1,10 @@
+﻿  project2.cpp
+E:\project2\project2\project2.cpp(91,33): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project2\project2\project2.cpp(166,2): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project2\project2\project2.cpp(241,31): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+E:\project2\project2\project2.cpp(254,59): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+  project2.vcxproj -> E:\project2\x64\Debug\project2.exe
