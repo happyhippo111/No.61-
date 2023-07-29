@@ -40,6 +40,7 @@ SM3为MD结构，计算原理大致如下：
 >1.	随机生成一个消息作为原始消息m，用SM3函数算出其hash值(h)，并算出其length值。
 >2.	随意选取一个附加消息。首先用h推算出这一次加密结束后8个向量的值，再以它们作为初始向量，去加密附加消息，得到其hash值(暂用hash1指代)。
 >3.	计算m+ padding + 附加消息的hash值(暂用hash2指代)，比较hash1与hash2，如果hash1和hash2相等，则对SM3的长度攻击成功。
+
 实现方式：本项目用c++完成。<br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_03/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
