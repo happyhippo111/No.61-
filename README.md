@@ -98,8 +98,18 @@ SM3为MD结构，计算原理大致如下：
 在tx里面可以看到交易的地址、id、哈希值，交易时间、交易金额、是否双花等信息<br>
 
 ## 🎖️project_19 forge a signature to pretend that you are Satoshi✔️
+实现方式：<br>
+R = H(m)/s * G + r/s * P<br>
+如果令 u = H(m)/s, v = r/s，<br>
+那么 R = uG + vP<br>
+通过随机生成u、v的值u'，v'，使得：<br>
+u'G + v'P = R'<br>
+计算出 r' = R'.x， 从而得到 s' = r'/v， H(m') = u * s'<br>
+那么对于消息m'，其签名结果为：(r', s')。此签名是可以通过验证检查，所以有效。<br>
 
-
+这个操作其实有点类似于签名延展性，没有通过私钥，利用已有合法签名构造另外的有效签名。<br>
+这个项目使用之前写过的ECDSA.py作为签名库，通过python编程实现伪造<br>
+运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_19/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
 
 
 
