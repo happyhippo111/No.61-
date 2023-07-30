@@ -1,3 +1,0 @@
-﻿  AES-encrypt.cpp
-E:\创新创业实践\代码仓\Project_09\2\AES\Project2\AES-encrypt.cpp(133,48): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  Project2.vcxproj -> E:\创新创业实践\代码仓\Project_09\2\AES\Project2\x64\Debug\Project2.exe
