@@ -75,7 +75,26 @@ SM3为MD结构，计算原理大致如下：
 实现方式：使用C++实现<br>
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/Project_09/SM4/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
 ## 🎖️project_18 send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself✔️
-运行结果：见项目文档 
+实现方式：<br>
+生成比特币测试地址，记录图中出现的地址和私钥：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E6%B5%8B%E8%AF%95%E7%89%88%E5%9C%B0%E5%9D%80.png)
+登录比特币的测试币水龙头，获取一定数量的测试用币<br>
+
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%8E%B7%E5%8F%96%E6%B5%8B%E8%AF%95%E5%B8%81.png)
+
+进入[网站](https://live.blockcypher.com/)，查询我的账户交易信息和刚刚的交易记录
+
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%B4%A6%E6%88%B7%E8%AE%B0%E5%BD%95.png)
+
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E4%BA%A4%E6%98%93%E4%BF%A1%E6%81%AF.png)
+
+使用python自写脚本，可以解析获取该交易的详细信息<br>
+脚本运行结果如下：<br>
+
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+完整爬取内容请见文件夹内parsed tx data.md文件<br>
+在tx里面可以看到交易的地址、id、哈希值，交易时间、交易金额、是否双花等信息<br>
 
 
 
