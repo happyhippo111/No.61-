@@ -2,7 +2,7 @@ from ECDSA import *
 import random
 import string
 
-mod_value = 19
+mod_value = 17
 a = 2
 b = 2
 G = [7, 1]
