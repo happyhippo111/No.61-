@@ -176,7 +176,7 @@ def deduce_pubkey(s, r, k, G):
     print("根据签名推出公钥", result)
 
 
-mod_value = 19
+mod_value = 17
 a = 2
 b = 2
 G = [7, 1]
