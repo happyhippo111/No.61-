@@ -66,9 +66,9 @@ SM3为MD结构，计算原理大致如下：
 	`W[30] = P1(W[14] ^ W[21] ^ ROTATELEFT(W[27], 15)) ^ ROTATELEFT(W[17], 7) ^ W[24];`<br>
 	`W[31] = P1(W[15] ^ W[22] ^ ROTATELEFT(W[28], 15)) ^ ROTATELEFT(W[18], 7) ^ W[25];`<br>
 优化二：<br>
-利用SIMD指令集优化。把以下代码:<br>
+利用SIMD指令集优化,把以下代码:<br>
   `for** (j = 0; j < 16; j++) {` <br>
-​	 `W[j] = cpu_to_be32(pblock[j]);` <br>
+​	 `W[j] = cpu_to_be32(pblock[j])};` <br>
 换成：<br>
 `__m256i data = _mm256_loadu_epi32((__m256i*) & pblock[0]);`<br>
 	`__m256i be32 = _mm256_bswap_epi32(data);`<br>
@@ -77,14 +77,14 @@ SM3为MD结构，计算原理大致如下：
 	`__m256i be32_ = _mm256_bswap_epi32(data_);`<br>
 	`_mm256_storeu_epi32((__m256i*) & W[8], be32_);`<br>
  把以下代码：<br>
- **`for** (j = 0; j < 64; j++) {` <br>
-​    `W1[j] = W[j] ^ W[j + 4];` <br>
+ `for** (j = 0; j < 64; j++) {` <br>
+​    `W1[j] = W[j] ^ W[j + 4]};` <br>
  换成：<br>
  `for (int j = 0; j < 8; j++) {`<br>
 		`__m256i val1 = _mm256_loadu_epi32((__m256i*) & W[j * 8]);`<br>
 		`__m256i val2 = _mm256_loadu_epi32((__m256i*) & W[4 + j * 8]);`<br>
 		`__m256i xor_val = _mm256_xor_si256(val1, val2);`<br>
-		`_mm256_storeu_epi32(&W1[j * 8], xor_val);}``<br>
+		`_mm256_storeu_epi32(&W1[j * 8], xor_val);}`<br>
  __m256i代表256 位紧缩整数（AVX），_mm256_loadu_epi32代表加载数据，<br>
  _mm256_storeu_epi32代表储存数据，_mm256_xor_si256代表按位异或。<br>
  实现方式： C++编程实现<br>
