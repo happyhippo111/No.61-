@@ -49,51 +49,48 @@ SM3为MD结构，计算原理大致如下：
 名为SM3的文件夹中文件还是基础未优化的，利用它与后面优化后的SM3对比，能够看出SM3的优化。<br>
 优化一：<br>
 去除部分for循环，即把for循环中的内容展开一条条写，如：<br>
-`W[16] = P1(W[0] ^ W[7] ^ ROTATELEFT(W[13], 15)) ^ ROTATELEFT(W[3], 7) ^ W[10];
-	W[17] = P1(W[1] ^ W[8] ^ ROTATELEFT(W[14], 15)) ^ ROTATELEFT(W[4], 7) ^ W[11];
-	W[18] = P1(W[2] ^ W[9] ^ ROTATELEFT(W[15], 15)) ^ ROTATELEFT(W[5], 7) ^ W[12];
-	W[19] = P1(W[3] ^ W[10] ^ ROTATELEFT(W[16], 15)) ^ ROTATELEFT(W[6], 7) ^ W[13];
-	W[20] = P1(W[4] ^ W[11] ^ ROTATELEFT(W[17], 15)) ^ ROTATELEFT(W[7], 7) ^ W[14];
-	W[21] = P1(W[5] ^ W[12] ^ ROTATELEFT(W[18], 15)) ^ ROTATELEFT(W[8], 7) ^ W[15];
-	W[22] = P1(W[6] ^ W[13] ^ ROTATELEFT(W[19], 15)) ^ ROTATELEFT(W[9], 7) ^ W[16];
-	W[23] = P1(W[7] ^ W[14] ^ ROTATELEFT(W[20], 15)) ^ ROTATELEFT(W[10], 7) ^ W[17];
-	W[24] = P1(W[8] ^ W[15] ^ ROTATELEFT(W[21], 15)) ^ ROTATELEFT(W[11], 7) ^ W[18];
-	W[25] = P1(W[9] ^ W[16] ^ ROTATELEFT(W[22], 15)) ^ ROTATELEFT(W[12], 7) ^ W[19];
-	W[26] = P1(W[10] ^ W[17] ^ ROTATELEFT(W[23], 15)) ^ ROTATELEFT(W[13], 7) ^ W[20];
-	W[27] = P1(W[11] ^ W[18] ^ ROTATELEFT(W[24], 15)) ^ ROTATELEFT(W[14], 7) ^ W[21];
-	W[28] = P1(W[12] ^ W[19] ^ ROTATELEFT(W[25], 15)) ^ ROTATELEFT(W[15], 7) ^ W[22];
-	W[29] = P1(W[13] ^ W[20] ^ ROTATELEFT(W[26], 15)) ^ ROTATELEFT(W[16], 7) ^ W[23];
-	W[30] = P1(W[14] ^ W[21] ^ ROTATELEFT(W[27], 15)) ^ ROTATELEFT(W[17], 7) ^ W[24];
-	W[31] = P1(W[15] ^ W[22] ^ ROTATELEFT(W[28], 15)) ^ ROTATELEFT(W[18], 7) ^ W[25];`
+`W[16] = P1(W[0] ^ W[7] ^ ROTATELEFT(W[13], 15)) ^ ROTATELEFT(W[3], 7) ^ W[10];<br>
+	W[17] = P1(W[1] ^ W[8] ^ ROTATELEFT(W[14], 15)) ^ ROTATELEFT(W[4], 7) ^ W[11];<br>
+	W[18] = P1(W[2] ^ W[9] ^ ROTATELEFT(W[15], 15)) ^ ROTATELEFT(W[5], 7) ^ W[12];<br>
+	W[19] = P1(W[3] ^ W[10] ^ ROTATELEFT(W[16], 15)) ^ ROTATELEFT(W[6], 7) ^ W[13];<br>
+	W[20] = P1(W[4] ^ W[11] ^ ROTATELEFT(W[17], 15)) ^ ROTATELEFT(W[7], 7) ^ W[14];<br>
+	W[21] = P1(W[5] ^ W[12] ^ ROTATELEFT(W[18], 15)) ^ ROTATELEFT(W[8], 7) ^ W[15];<br>
+	W[22] = P1(W[6] ^ W[13] ^ ROTATELEFT(W[19], 15)) ^ ROTATELEFT(W[9], 7) ^ W[16];<br>
+	W[23] = P1(W[7] ^ W[14] ^ ROTATELEFT(W[20], 15)) ^ ROTATELEFT(W[10], 7) ^ W[17];<br>
+	W[24] = P1(W[8] ^ W[15] ^ ROTATELEFT(W[21], 15)) ^ ROTATELEFT(W[11], 7) ^ W[18];<br>
+	W[25] = P1(W[9] ^ W[16] ^ ROTATELEFT(W[22], 15)) ^ ROTATELEFT(W[12], 7) ^ W[19];<br>
+	W[26] = P1(W[10] ^ W[17] ^ ROTATELEFT(W[23], 15)) ^ ROTATELEFT(W[13], 7) ^ W[20];<br>
+	W[27] = P1(W[11] ^ W[18] ^ ROTATELEFT(W[24], 15)) ^ ROTATELEFT(W[14], 7) ^ W[21];<br>
+	W[28] = P1(W[12] ^ W[19] ^ ROTATELEFT(W[25], 15)) ^ ROTATELEFT(W[15], 7) ^ W[22];<br>
+	W[29] = P1(W[13] ^ W[20] ^ ROTATELEFT(W[26], 15)) ^ ROTATELEFT(W[16], 7) ^ W[23];<br>
+	W[30] = P1(W[14] ^ W[21] ^ ROTATELEFT(W[27], 15)) ^ ROTATELEFT(W[17], 7) ^ W[24];<br>
+	W[31] = P1(W[15] ^ W[22] ^ ROTATELEFT(W[28], 15)) ^ ROTATELEFT(W[18], 7) ^ W[25];`<br>
  
 优化二：<br>
 利用SIMD指令集优化。把以下代码:<br>
-  `for** (j = 0; j < 16; j++) {` 
-
-​	 `W[j] = cpu_to_be32(pblock[j]);` 
+  `for** (j = 0; j < 16; j++) {` <br>
+​	 `W[j] = cpu_to_be32(pblock[j]);` <br>
 换成：<br>
-`__m256i data = _mm256_loadu_epi32((__m256i*) & pblock[0]);
-	__m256i be32 = _mm256_bswap_epi32(data);
-	_mm256_storeu_epi32((__m256i*) & W[0], be32);
-	__m256i data_ = _mm256_loadu_epi32((__m256i*) & pblock[8]);
-	__m256i be32_ = _mm256_bswap_epi32(data_);
-	_mm256_storeu_epi32((__m256i*) & W[8], be32_);`
+`__m256i data = _mm256_loadu_epi32((__m256i*) & pblock[0]);<br>
+	__m256i be32 = _mm256_bswap_epi32(data);<br>
+	_mm256_storeu_epi32((__m256i*) & W[0], be32);<br>
+	__m256i data_ = _mm256_loadu_epi32((__m256i*) & pblock[8]);<br>
+	__m256i be32_ = _mm256_bswap_epi32(data_);<br>
+	_mm256_storeu_epi32((__m256i*) & W[8], be32_);`<br>
  把以下代码：<br>
- **`for** (j = 0; j < 64; j++) {` 
-
-​    `W1[j] = W[j] ^ W[j + 4];` 
+ **`for** (j = 0; j < 64; j++) {` <br>
+​    `W1[j] = W[j] ^ W[j + 4];` <br>
  换成：<br>
- `for (int j = 0; j < 8; j++) {
-		__m256i val1 = _mm256_loadu_epi32((__m256i*) & W[j * 8]);
-		__m256i val2 = _mm256_loadu_epi32((__m256i*) & W[4 + j * 8]);
-		__m256i xor_val = _mm256_xor_si256(val1, val2);
-		_mm256_storeu_epi32(&W1[j * 8], xor_val);
-	}`
+ `for (int j = 0; j < 8; j++) {<br>
+		__m256i val1 = _mm256_loadu_epi32((__m256i*) & W[j * 8]);<br>
+		__m256i val2 = _mm256_loadu_epi32((__m256i*) & W[4 + j * 8]);<br>
+		__m256i xor_val = _mm256_xor_si256(val1, val2);<br>
+		_mm256_storeu_epi32(&W1[j * 8], xor_val);}`<br>
  __m256i代表256 位紧缩整数（AVX），_mm256_loadu_epi32代表加载数据，_mm256_storeu_epi32代表储存数据，_mm256_xor_si256代表按位异或。<br>
  实现方式： C++编程实现<br>
  运行结果：<br>
 优化前：<br>
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_04/%E4%BC%98%E5%8C%96%E5%89%8D%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_04/%E4%BC%98%E5%8C%96%E5%89%8D%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)<br>
 优化后：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_04/%E4%BC%98%E5%8C%96%E5%90%8E%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
