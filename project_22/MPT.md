@@ -24,7 +24,7 @@ Merkle Patricia Tree 是以下各项的组合：
 - Patricia Trie：一种高效的[Radix Trie](https://en.wikipedia.org/wiki/Radix_tree)，一种数据结构，其中“键”代表到达节点所必须采取的路径
 - Merkle Tree：哈希树，其中每个节点的哈希值都是根据其子节点哈希值计算的。我们将从探索 Merkle Patricia Trees 的“Patricia Trie”部分开始，然后整合它们的“Merkle Tree”部分。
 
-### Trie-字典树
+### **Trie-字典树
 
 trie 或前缀树是搜索树的一种，是一种用于从集合中查找特定键的树数据结构。这些键通常是字符串，节点之间的链接不是由整个键定义，而是由单个字符定义。为了访问键（恢复其值、更改它或删除它），将按照节点之间的链接（代表键中的每个字符）深度优先遍历 trie。
 
@@ -41,21 +41,21 @@ trie 或前缀树是搜索树的一种，是一种用于从集合中查找特定
 
 将这些账户转换为字典树的结构储存：
 
-111
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_22/P1.png)
 
-### Patricia Trie
+### **Patricia Trie
 
 这是一种空间优化特里树，其中作为唯一子节点的每个节点都与其父节点合并。结果是每个内部节点的子节点数量最多为基数树的基数 r，其中 r 是正整数且为 2 的 x 次方，且 x ≥ 1。与常规树不同，边可以标记为元素序列以及单个元素。这使得基数树对于小集合（特别是当字符串很长时）和共享长前缀的字符串集合更加有效。
 
 对于非常稀疏的路径，完全可以进一步压缩：
 
-222
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_22/P2.png)
 
 可见Patricia Trie对于稀疏的结构压缩效果很好，而实际当中以太坊中的地址是160bit，能表达的地址数为2^160,是一个非常庞大的天文数字，故整颗树也呈稀疏状，这是为何用Patricia Trie进行进一步压缩的原因。
 
 基数树对于构建具有可以表示为字符串的键的关联数组非常有用。它们在 IP 路由领域有特殊的应用，其中包含大范围值（除了少数例外）的能力特别适合 IP 地址的分层组织。它们还用于信息检索中文本文档的倒排索引。
 
-###  Merkle Patricia Trie
+###  **Merkle Patricia Trie
 
 **根据对以上的研究，我认为Patricia Merkle 树是两种不同类型树的组合，保证安全性的同时提高了效率。（紧凑；Patricia 树，安全；Merkle 树）**
 
@@ -65,7 +65,7 @@ trie 或前缀树是搜索树的一种，是一种用于从集合中查找特定
 
 Merkel-Patricia树的实现方式展示：
 
-3333
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_22/P3.png)
 
 在这个图中右上角有4个`[key, value]`对，我们要存储这4对数据。`key`每个方框里是一个`nibble`，`next node`里面存着下一个节点的哈希值。比如说，从这四个路径中可以提取出公共路径`a7`，因此可以建立一个扩展节点A, [00 a7, hashB]，`a7`是一个偶数长度的扩展节点，前缀为00，`hashB`是下一个节点B的`hash`值；下一个`nibble`取值有1, 7, f，因此节点B为一个分支节点，其中index为1，7，f的位置保存下一个节点的`hash`值，`value`为空。
 
@@ -74,11 +74,11 @@ Merkel-Patricia树的实现方式展示：
 
 这里既通过哈希保证了安全，如果我们想要加入或修改一个节点，也会集成Patricia Trie的优点只改动一小部分，不会像Merkel Tree一样动一大部分树。
 
-## 安全性
+### **安全性
 
 相比于Trie-字典树，节点与节点之间的联系不再采用内存指针的方式，而是采用`hash`值的方式，比如上图中的第一个节点中，这个值的节点存储执行下一个节点的`hash`值，然后将这个`hash`值与实际节点对应关系存储在`[key, value]`的数据库中。当有人篡改子节点值时，也必须要修改父节点里的`hash`值，直到根节点，所以我们只需要验证根节点的`hash`值，就知道底层数据是否正确。
 
-### 编码
+### **编码
 
 MPT树的key值共有三种不同的编码方式，以满足不同场景的不同需求。
 
@@ -90,9 +90,9 @@ Raw编码：原生的key编码，是MPT对外提供接口中使用的编码方�
 
  HP编码：16进制前缀编码，用于对数据库中树节点key进行编码，当树节点被加载到内存时，HP编码被转换成Hex编码；
 
-4444
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_22/P4.png)
 
-### 以太坊中的 MPT
+### **以太坊中的 MPT
 
 以太坊的 Merkle Patricia Trie 本质上是一个键值映射，它提供了以下标准方法：
 
