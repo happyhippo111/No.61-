@@ -130,7 +130,23 @@ report请见文件夹project_10内文件，[传送门](https://github.com/happyh
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_10/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
 
+## 🎖️project_15 implement sm2 2P sign with real network communication✔️
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_15/PPT.jpg)
+实现思路:<br>
+为实现SM2曲线上2P签名并进行真实的网络通信，我们需要对SM2算法添加一些功能。我进行了以下步骤：
 
+1.  修改所使用的椭圆曲线参数，将SM2的参数值替换为你想要使用的SM2曲线参数。
+      
+2.  使用Python的socket模块实现网络通信。添加相应的代码来创建UDP客户端或服务器，并进行数据的发送和接收。注意在发送和接收数据时，要将数据进行适当的编码和解码。
+  ```
+  import socket
+```
+为了表达方便，我将数据转化为可以编码为字节的字符串格式，在接收方再将其转换回原来的格式
+
+3.  修改代码来推导SM2公钥，根据签名结果和已知参数进行计算。
+
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_15/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
 
 ## 🎖️project_17 比较Firefox和谷歌的记住密码插件的实现区别✔️
 report请见文件夹project_17内文件，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_17/%E6%AF%94%E8%BE%83Firefox%E5%92%8C%E8%B0%B7%E6%AD%8C%E7%9A%84%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8C%BA%E5%88%AB.md)<br>
