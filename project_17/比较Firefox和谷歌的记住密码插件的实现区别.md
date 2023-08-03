@@ -100,5 +100,5 @@ public class Argon2PasswordEncoder implements PasswordEncoder {
 
 
 **参考文献**
-> ### https://github.com/mozilla/fxa-auth-server/wiki/onepw-protocol#vs-old-sync
+>  https://github.com/mozilla/fxa-auth-server/wiki/onepw-protocol#vs-old-sync
 > [使用Argon2进行加解密_argon.verify_傲慢小胖妞的博客-CSDN博客](https://blog.csdn.net/weixin_42932323/article/details/109984821)
