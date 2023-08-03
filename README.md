@@ -111,10 +111,8 @@ SM3为MD结构，计算原理大致如下：
 ## 🎖️project_09 AES / SM4 software implementation✔️
 
 ### AES实现✔️
-
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG)
 实现方式:<br>
-根据上述流程图使用C++完成<br>
+根据AES加密流程，使用C++完成<br>
 
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
@@ -159,6 +157,17 @@ u'G + v'P = R'<br>
 仅知道中本聪的公钥，便可以通过这种方式伪造<br>
 实现方式：这个项目使用之前写过的ECDSA.py作为签名库，通过python编程实现伪造<br>
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_19/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+## 🎖️project_21 Schnorr Bacth✔️
+
+实现方式：<br>
+根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先实现了基本的Schnorr Signature，然后又实现了Schnorr Signature的批量验签。
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png)
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png)
+运行结果：<br>
+我分别用正常的Schnorr Signature单独验证签名9次，然后用批量验签同时对9个签名验证。**通过实验发现，批量验签可以比单独验签快近3倍。** <br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
 
 
 
