@@ -25,7 +25,7 @@ Memory-hard hash function 也可以被用在加密货币的工作量证明中，
 **Argon2d**使用依赖数据的内存访问，这使得它很适合用于加密数字货币和工作量证明的应用程序，而不会受到侧信道定时攻击的威胁。**Argon2i** 使用与数据无关的内存访问，这是密码哈希的首选方法。**Argon2id** 在内存第一次迭代的前半部分充当 Argon2i，其余部分则充当 Argon2d。因此，基于时间 —— 空间的平衡，它既提供了侧信道攻击保护也节约了暴力开销。Argon2i 对内存进行了更多的传递，以防止权衡攻击的发生。
 
 
-![](https://pic3.zhimg.com/80/v2-d16b45f9257a86b0df7cad880cde778a_1440w.webp)
+![](https://github.com/happyhippo111/No.61-/blob/main/project_17/P1.png)
 
 
 ### Argon2安全性分析
@@ -46,7 +46,7 @@ Memory-hard hash function 也可以被用在加密货币的工作量证明中，
 存储的预加密响应也将用作预言机，但服务器明确不保留加密它的响应。由于keyFetchToken是随机生成的，并且独立于用户的密码，因此它加密的数据无助于测试密码猜测。`GET /account/keys``keyFetchToken`
 
 ### PBKDF2
-![](https://github.com/mozilla/fxa-auth-server/wiki/images/onepw-create.png)
+![](https://github.com/happyhippo111/No.61-/blob/main/project_17/P2.png)
 初始的密码跟salt经过PRF的操作生成了一个key，然后这个key作为下一次加密的输入和密码再次经过PRF操作，生成了后续的key，这样重复很多次，生成的key再做异或操作，生成了最终的T，然后把这些最终生成的T合并，生成最终的密码。
 
 根据2000年的建议，一般来说这个遍历次数要达到1000次以上，才算是安全的。当然这个次数也会随着CPU计算能力的加强发生变化。这个次数可以根据安全性的要求自行调整。
