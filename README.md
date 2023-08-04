@@ -181,6 +181,48 @@ report请见文件夹project_10内文件，[传送门](https://github.com/happyh
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_10/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
+## 🎖️project_11 impl sm2 with RFC6979✔️
+在传统的签名中，随机数k被用于计算签名。然而，使用相同的私钥和消息多次签名时，如果k值不是真正的随机数，可能导致私钥泄漏。RFC 6979提供了一种安全的、确定性的方式来生成k值,我通过python编程实现函数 rfc6979_generate_k如下：
+  ```
+  def rfc6979_generate_k(hash_func, private_key, message, curve_order):
+    def bits2int(bits):
+        return int.from_bytes(bits, 'big')
+
+    def int2octets(x):
+        return x.to_bytes((x.bit_length() + 7) // 8, 'big')
+
+    # 步骤1：计算私钥和消息的哈希。
+    h1 = hash_func(int2octets(private_key) + message).digest()
+
+    # 步骤2：初始化变量。
+    V = b'\x01' * 32
+    K = b'\x00' * 32
+    K = hmac.new(K, V + b'\x00' + h1, hash_func).digest()
+    V = hmac.new(K, V, hash_func).digest()
+    K = hmac.new(K, V + b'\x01' + h1, hash_func).digest()
+    V = hmac.new(K, V, hash_func).digest()
+
+    # 步骤3：主循环计算K
+    while True:
+        T = b''
+        while len(T) < 32:
+            V = hmac.new(K, V, hash_func).digest()
+            T += V
+        k = bits2int(T)
+        if k >= 1 and k < curve_order:
+            return k
+
+        K = hmac.new(K, V + b'\x00', hash_func).digest()
+        V = hmac.new(K, V, hash_func).digest()
+```
+然后**编写在椭圆曲线上进行加、乘等算法的函数**，利用上述函数，进而**实现了SM2的签名和验签**
+<center class="half">
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM%E7%AD%BE%E5%90%8D.png" width=200/>
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM2%E9%AA%8C%E7%AD%BE.png" width=200/>
+</center>
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
 
 ## 🎖️project_15 implement sm2 2P sign with real network communication✔️
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_15/PPT.jpg)
