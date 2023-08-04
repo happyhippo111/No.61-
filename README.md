@@ -1,4 +1,38 @@
-# No.61-
+# No.61-孔婧202122202212
+**各位助教和老师，你们好！！！欢迎光临我的代码仓🤩**
+我是网安1班孔婧，本次实验未组队，**以下所以项目均为本人独立完成**
+小组分工表：
+| 组员  | 名字 | 学号         | 负责项目                                        |
+| ----- | ---- | ------------ | ----------------------------------------------- |
+| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、15、17、18、19、21、22 |
+
+
+项目明细：
+| 编号 | 项目要求                                                     | 完成情况 |
+| ---- | ------------------------------------------------------------ | -------- |
+| 1    | implement the naïve birthday attack of reduced SM3           | √        |
+| 2    | implement the Rho method of reduced SM3                      | √        |
+| 3    | implement length extension attack for SM3, SHA256, etc.      | √        |
+| 4    | do your best to optimize SM3 implementation (software)       | √        |
+| 5    | Impl Merkle Tree following RFC6962                           | √        |
+| 6    | impl this protocol with actual network communication         |          |
+| 7    | Try to Implement this scheme                                 |          |
+| 8    | AES impl with ARM instruction                                | √        |
+| 9    | AES / SM4 software implementation                            | √        |
+| 10   | report on the application of this deduce technique in Ethereum with ECDSA | √        |
+| 11   | impl sm2 with RFC6979                                        |          |
+| 12   | verify the above pitfalls with proof-of-concept code         |          |
+| 13   | Implement the above ECMH scheme                              |          |
+| 14   | Implement a PGP scheme with SM2                              |          |
+| 15   | implement sm2 2P sign with real network communication        | √        |
+| 16   | implement sm2 2P decrypt with real network communication     |          |
+| 17   | 比较Firefox和谷歌的记住密码插件的实现区别                    | √        |
+| 18   | send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself | √        |
+| 19   | forge a signature to pretend that you are Satoshi            | √        |
+| 20   | 与project13重复，删去                                        |          |
+| 21   | Schnorr Bacth                                                | √        |
+| 22   | research report on MPT                                       | √        |
+
 
 ## 🎖️project_01 implement the naïve birthday attack of reduced SM3 ✔️
 生日攻击是一种利用生日悖论的攻击方式，针对哈希算法。生日悖论指的是，随着数据量的增加，出现两个不同输入具有相同哈希值的概率逐渐增加。在SM3生日攻击中，我会生成一系列随机字符串，并计算其SM3哈希值的前n位。通过大量的随机字符串生成和比较，试图找到两个不同的字符串，其前n位哈希值相同，从而达到生日攻击的目的。<br>
@@ -121,6 +155,7 @@ merkle树大概如下图所示：<br>
 >uint8x16_t vaeseq_u8(uint8x16_t data, uint8x16_t key);<br>
 >// 执行AES混淆列（mix columns）<br>
 >uint8x16_t vaesmcq_u8(uint8x16_t data);<br>
+
 实现方式：该项目使用C语言编程完成<br>
 因为没有ARM架构的电脑，所以难以跑出预期结果，请各位老师和助教见谅😭😭😭<br>
 
