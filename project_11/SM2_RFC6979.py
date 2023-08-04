@@ -92,19 +92,6 @@ def ECC_mul(s, p):
     return r
 
 def rfc6979_generate_k(hash_func, private_key, message, curve_order):
-    """
-    根据RFC 6979生成ECDSA签名的确定性k值。
-
-    参数：
-        hash_func (callable)：用于计算消息摘要的哈希函数。
-        private_key (int)：用于签名的私钥。
-        message (bytes)：要签名的消息。
-        curve_order (int)：ECDSA中使用的椭圆曲线的阶。
-
-    返回：
-        int：用于ECDSA签名的确定性k值。
-    """
-
     def bits2int(bits):
         return int.from_bytes(bits, 'big')
 
@@ -137,31 +124,24 @@ def rfc6979_generate_k(hash_func, private_key, message, curve_order):
 
 
 def sm2_sign(private_key, message):
-    # 步骤1：已在你的代码中定义椭圆曲线参数和基点G
-    # 步骤2：生成随机整数k，你可以使用RFC 6979算法或其他随机数生成器
     k = rfc6979_generate_k(hashlib.sha256, private_key, message, N)
     # 步骤3：计算椭圆曲线点S = k * G
     S = ECC_mul(k, G)
-    
     Z = hashlib.sha256(message).digest()
-    # 步骤5：计算e = Z mod N
     e = int.from_bytes(Z, 'big') % N
-    # 步骤6：计算k的逆元k_inv = Multi_inverse(k, N)
     k_inv = Multi_inverse(k, N)
-    # 步骤7：计算签名参数r = (e + S_X) mod N
+    # 计算签名参数r = (e + S_X) mod N
     r = (e + S[0]) % N
-    # 步骤8：计算((1+d)^-1* (k - r * private_key)) mod N，其中s_inv为s的逆元
+    #计算((1+d)^-1* (k - r * private_key)) mod N，其中s_inv为s的逆元
     s_inv = Multi_inverse(1+prikey, N)
     s = (s_inv * (k - r * private_key)) % N
-
-    # 步骤9：返回签名(r, s)
     return r, s
+    
 def sm2_Verify(r,s, message, public_key):
     # 计算消息的哈希值Z = Hash(message)
     Z = hashlib.sha256(message).digest()
     # 计算e = Z mod N
     e = int.from_bytes(Z, 'big') % N
-    #
     t=(r+s)%N
     x,y=Point_Add(ECC_mul(s, G), ECC_mul(t, public_key))
     R=(e+x)%N
