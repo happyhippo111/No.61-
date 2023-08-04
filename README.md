@@ -94,6 +94,22 @@ SM3为MD结构，计算原理大致如下：
 优化后<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_04/%E4%BC%98%E5%8C%96%E5%90%8E%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
+## 🎖️project_05 Impl Merkle Tree following RFC6962 ✔️
+实现方法：<br>
+本项目要求实现merkle树（按照RFC6962规则），我最终使用python编程实现了：**构造一个有十万个叶子的merkle树；证明某个元素的存在性；证明某个元素的排除性。** <br>
+merkle树是一种哈希树，其中每个叶子节点都标有数据块的加密哈希值，而每个非叶子节点都标有其子节点的加密哈希值的标签。大多数哈希树的实现是二进制的（每个节点有两个子节点），但它们也可以有更多的子节点。<br>
+merkle树大概如下图所示：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_05/merkle%E6%A0%91.png)<br>
+本项目实现了 **按照RFC6962规则构造一棵有十万个叶子的merkle树，并输出了其根植。** <br>
+**证明某个元素存在这个merkle树里** ：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_05/%E8%AF%81%E6%98%8E%E5%85%83%E7%B4%A0%E5%9C%A8%E6%A0%91%E9%87%8C.png)<br>
+要思想如下：给出这个元素的hash值，以及树中的所有相关节点，这些节点被散列在一起以构建r散列，则我们可以将树的根值与r进行比较。如果它们是相同的散列，那一定意味着这个元素实际上存在于 Merkle 树中。<br>
+**证明某个元素不在这个merkle树里：** <br>
+以这个元素为66.5为例说明：主要思想是证明66在Merkle 树中，67在Merkle 树中，且它们紧挨着，那么66.5不在Merkle 树中。<br>
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_05/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)<br>
+
+
 
 
 ## 🎖️project_08 AES impl with ARM instruction ✔️
