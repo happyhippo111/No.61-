@@ -1,10 +1,10 @@
 # No.61-孔婧202122202212
 **各位助教和老师，你们好！！！欢迎光临我的代码仓🤩**<br>
-我是网安1班孔婧，本次实验未组队，共完成16个，**以下所以项目均为本人独立完成**<br>
+我是21级网安1班孔婧，本次实验未组队，共完成16个，**以下所有项目均为本人独立完成**<br>
 小组分工表<br>
 | 组员  | 名字 | 学号         | 负责项目                                        |
 | ----- | ---- | ------------ | ----------------------------------------------- |
-| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、15、17、18、19、21、22 |
+| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、11、15、16、17、18、19、21、22 |
 
 
 项目明细：
@@ -20,12 +20,12 @@
 | 8    | AES impl with ARM instruction                                | √        |
 | 9    | AES / SM4 software implementation                            | √        |
 | 10   | report on the application of this deduce technique in Ethereum with ECDSA | √        |
-| 11   | impl sm2 with RFC6979                                        |          |
+| 11   | impl sm2 with RFC6979                                        |   √       |
 | 12   | verify the above pitfalls with proof-of-concept code         |          |
 | 13   | Implement the above ECMH scheme                              |          |
 | 14   | Implement a PGP scheme with SM2                              |          |
 | 15   | implement sm2 2P sign with real network communication        | √        |
-| 16   | implement sm2 2P decrypt with real network communication     |          |
+| 16   | implement sm2 2P decrypt with real network communication     |  √         |
 | 17   | 比较Firefox和谷歌的记住密码插件的实现区别                    | √        |
 | 18   | send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself | √        |
 | 19   | forge a signature to pretend that you are Satoshi            | √        |
@@ -199,6 +199,30 @@ report请见文件夹project_10内文件，[传送门](https://github.com/happyh
 
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_15/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
+## 🎖️project_16 implement sm2 2P decrypt with real network communication✔️
+实现方式：python 建立UDP连接
+
+`import socket`
+
+![图片](https://github.com/happyhippo111/No.61-/blob/main/project_16/SM2%202P.jpg)
+
+通过修改project 15代码，将其拆分为3段；我们可以利用T1 - C1 =(x2,y2) = d(私钥）* C1 =kP,巧妙地利用C2进行解密
+
+用户B的解密步骤如下所示：
+
+B1: 从密文C中取出比特串C，并按照本文4.2.3和4.2.9部分的细节，将C的数据类型转换为椭圆曲线上的点。验证C是否满足椭圆曲线方程，如果不满足，则报错并退出。
+
+B2: 计算椭圆曲线点S = [h]C1 - C，其中h是椭圆曲线的基点的倍数。如果S是无穷远点，则报错并退出。
+
+B3: 计算[dB]JC1 = (a2, 3/2)，按照本文4.2.5和4.2.4部分的细节，将坐标2、12的数据类型转换为比特串。
+
+B4: 计算t = KDF(a2^32, klen)，其中KDF是一个从输入密钥生成输出密钥的密钥派生函数。如果t为全0比特串，则报错并退出。
+
+B5: 从密文C中取出比特串C2，并计算M' = C2 ⊕ t，这里⊕表示异或操作。
+
+B6: 计算1 = Hash(x2 || M' || y2)，其中Hash是一个哈希函数，x2和y2是椭圆曲线点S的坐标。从密文C中取出比特串C3，如果u ≠ C3，则报错并退出。
+运行结果：
+![图片](https://github.com/happyhippo111/No.61-/blob/main/project_16/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
 ## 🎖️project_17 比较Firefox和谷歌的记住密码插件的实现区别✔️
 report请见文件夹project_17内文件，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_17/%E6%AF%94%E8%BE%83Firefox%E5%92%8C%E8%B0%B7%E6%AD%8C%E7%9A%84%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8C%BA%E5%88%AB.md)<br>
