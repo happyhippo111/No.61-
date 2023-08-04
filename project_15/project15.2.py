@@ -1,36 +1,53 @@
+# main2.py
 from sm2 import *
 import socket
 import sys
 from random import randint
+import binascii
+from gmssl import sm3,func
 
 def establish_connection(address=('127.0.0.1', 111)):
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    address = ('127.0.0.1', 1112)
+    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
     try:
-        client.bind(address)
+        client.connect(('127.0.0.1', 1112))
         print("连接建立")
-        return client
-    except Exception as e:
-        print('连接失败:', e)
+    except Exception:
+        print('连接失败')
         sys.exit()
+    else:
+        # step 1
+        d1 = randint(1, N - 1)
+        P1 = ECC_mul(inverse(d1, P), G)
+        x, y = hex(P1[0]), hex(P1[1])
 
-def main2():
-    client = establish_connection(('', 111))
-    print("等待建立连接...")
+        client.sendto(x.encode('utf-8'), address)
+        client.sendto(y.encode('utf-8'), address)
 
-    # step1
-    d2 = randint(1, N - 1)
+        # step 3
+        msg = "hello !!!"
+        msg = hex(int(binascii.b2a_hex(msg.encode()).decode(), 16)).upper()[2:]
 
-    # STEP3
-    x, address = client.recvfrom(1024)
-    x = int(x.decode(), 16)
-    y, address = client.recvfrom(1024)
-    y = int(y.decode(), 16)
+        Z = sm3.sm3_hash(func.bytes_to_list(msg.encode()))
+        M = Z + msg
+        e = sm3.sm3_hash(func.bytes_to_list(M.encode()))
+        k1 = randint(1, N - 1)
+        Q1 = ECC_mul(k1, G)
+        x, y = hex(Q1[0]), hex(Q1[1])
 
-    T1 = (x, y)
+        client.sendto(x.encode('utf-8'), address)
+        client.sendto(y.encode('utf-8'), address)
+        client.sendto(e.encode('utf-8'), address)
 
-    # step4
-    T2 = ECC_mul(inverse(d2, P), T1)
-    x2, y2 = hex(T1[0]), hex(T1[1])
-    client.sendto(x2.encode('utf-8'), address)
-    client.sendto(y2.encode('utf-8'), address)
-    print("连接已关闭")
+        # step 5
+        r, _ = client.recvfrom(1024)
+        r = int(r.decode(), 16)
+        s2, _ = client.recvfrom(1024)
+        s2 = int(s2.decode(), 16)
+        s3, _ = client.recvfrom(1024)
+        s3 = int(s3.decode(), 16)
+        s = ((d1 * k1) * s2 + d1 * s3 - r) % N
+        print(f"Signature : {hex(r)} {hex(s)}")
+        client.close()
