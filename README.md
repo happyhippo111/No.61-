@@ -164,7 +164,7 @@ merkle树大概如下图所示：<br>
 
 ### AES实现✔️
 实现方式:<br>
-<img src="https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG" width = "600" >
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG" width = "600" ><br>
 根据AES加密流程，使用C++完成<br>
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
@@ -227,18 +227,18 @@ merkle树大概如下图所示：<br>
 ## 🎖️project_12 verify the above pitfalls with proof-of-concept code✔️
 #### leaking k leads to leaking of private key
 实现方法：<br>
-![Alt](https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%861.png =600)
+
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/leaking_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
 #### Reusing k leads to leaking of d
 实现方法：<br>
-![Alt]https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%862.png =900)
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%862.png" width = "800" ><br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/reusing_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 #### reusing k by different users
 实现方法：<br>
-![Alt](https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%863.png =900)
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%863.png" width = "800" ><br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/two_user_same_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
