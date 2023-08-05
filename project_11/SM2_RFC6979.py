@@ -133,7 +133,7 @@ def sm2_sign(private_key, message):
     # 计算签名参数r = (e + S_X) mod N
     r = (e + S[0]) % N
     #计算((1+d)^-1* (k - r * private_key)) mod N，其中s_inv为s的逆元
-    s_inv = Multi_inverse(1+prikey, N)
+    s_inv = Multi_inverse(1+private_key, N)
     s = (s_inv * (k - r * private_key)) % N
     return r, s
     
