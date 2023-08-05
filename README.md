@@ -164,8 +164,8 @@ merkle树大概如下图所示：<br>
 
 ### AES实现✔️
 实现方式:<br>
+<img src=" https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG" width=500/>
 根据AES加密流程，使用C++完成<br>
-
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
 
@@ -222,7 +222,8 @@ merkle树大概如下图所示：<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM2%E9%AA%8C%E7%AD%BE.png" width=500/>
 </figure>
 运行结果：<br>
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" width=700/>
+
 
 
 ## 🎖️project_15 implement sm2 2P sign with real network communication✔️
