@@ -331,6 +331,7 @@ u'G + v'P = R'<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png" width=600/>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png" width=600/>
 </figure>
+
 运行结果：<br>
 我分别用正常的Schnorr Signature单独验证签名9次，然后用批量验签同时对9个签名验证。**通过实验发现，批量验签可以比单独验签快近3倍。** <br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
