@@ -1,6 +1,6 @@
 # No.61-孔婧202122202212
 **各位助教和老师，你们好！！！欢迎光临我的代码仓🤩**<br>
-我是21级网安1班孔婧，本次实验未组队，共完成16个，**以下所有项目均为本人独立完成**<br>
+我是21级网安1班孔婧，本次实验未组队，共完成16个，**以下所有项目均为本人独立完成**💪💪💪<br>
 小组分工表<br>
 | 组员  | 名字 | 学号         | 负责项目                                        |
 | ----- | ---- | ------------ | ----------------------------------------------- |
@@ -80,7 +80,7 @@ SM3为MD结构，计算原理大致如下：
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_03/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 ## 🎖️Project_04: do your best to optimize SM3 implementation (software)✔️
-我在本项目实现了SM3的优化，使其运行1000000次的时间缩短到原来的82%。<br>
+我在本项目**实现了SM3的优化**，使其运行1000000次的时间缩短到原来的82%。<br>
 名为SM3的文件夹中文件还是基础未优化的，利用它与后面优化后的SM3对比，能够看出SM3的优化。<br>
 优化一：<br>
 去除部分for循环，即把for循环中的内容展开一条条写，如：<br>
@@ -101,7 +101,7 @@ SM3为MD结构，计算原理大致如下：
 	`W[30] = P1(W[14] ^ W[21] ^ ROTATELEFT(W[27], 15)) ^ ROTATELEFT(W[17], 7) ^ W[24];`<br>
 	`W[31] = P1(W[15] ^ W[22] ^ ROTATELEFT(W[28], 15)) ^ ROTATELEFT(W[18], 7) ^ W[25];`<br>
 优化二：<br>
-利用SIMD指令集优化,把以下代码:<br>
+利用**SIMD指令集优化**,把以下代码:<br>
   `for** (j = 0; j < 16; j++) {` <br>
 ​	 `W[j] = cpu_to_be32(pblock[j])};` <br>
 换成：<br>
@@ -149,7 +149,7 @@ merkle树大概如下图所示：<br>
 
 ## 🎖️project_08 AES impl with ARM instruction ✔️
 
-我使用ARMv8—AES内部函数，以实现在ARMv8架构上进行AES加密和解密操作<br>
+我使用ARMv8—AES内部函数，以**实现在ARMv8架构上进行AES加密和解密操作**<br>
 通过在[指令集网站](https://developer.arm.com/architectures/instruction-sets/intrinsics/#q=AES)中查阅，主要使用的函数定义如下：<br>
 
 >// 执行AES单轮加密( AddRoundKey, SubBytes 和 ShiftRows )<br>
@@ -176,14 +176,14 @@ merkle树大概如下图所示：<br>
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/SM4/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.jpg)
 
 ## 🎖️project_10 report on the application of this deduce technique in Ethereum with ECDSA✔️
-report请见文件夹project_10内文件，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_10/ECDSA_Ethereum.md)<br>
-我还用python编程实现了ECDSA签名算法(具体代码见project_10内python文件)<br>
+**report请见文件夹project_10内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_10/ECDSA_Ethereum.md)<br>
+我还用python编程**实现了ECDSA签名算法**(具体代码见project_10内python文件)<br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_10/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
 ## 🎖️project_11 impl sm2 with RFC6979✔️
 在传统的签名中，随机数k被用于计算签名。然而，使用相同的私钥和消息多次签名时，如果k值不是真正的随机数，可能导致私钥泄漏。RFC 6979提供了一种安全的、确定性的方式来生成k值。
-我通过python编程实现函数 rfc6979_generate_k如下：<br>
+**我通过python编程实现函数 rfc6979_generate_k**如下：<br>
   ```
   def rfc6979_generate_k(hash_func, private_key, message, curve_order):
     def bits2int(bits):
@@ -217,10 +217,10 @@ report请见文件夹project_10内文件，[传送门](https://github.com/happyh
         V = hmac.new(K, V, hash_func).digest()
 ```
 然后**编写在椭圆曲线上进行加、乘等算法的函数**，利用上述函数，进而**实现了SM2的签名和验签**
-<center class="half">
-<img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM%E7%AD%BE%E5%90%8D.png" width=00/>
+<figure>
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM%E7%AD%BE%E5%90%8D.png" width=500/>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/SM2%E9%AA%8C%E7%AD%BE.png" width=500/>
-</center>
+</figure>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
@@ -228,9 +228,9 @@ report请见文件夹project_10内文件，[传送门](https://github.com/happyh
 ## 🎖️project_15 implement sm2 2P sign with real network communication✔️
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_15/PPT.jpg)
 实现思路:<br>
-为实现SM2曲线上2P签名并进行真实的网络通信，我们需要对SM2算法添加一些功能。我进行了以下步骤：
+为实现SM2曲线上2P签名并进行真实的网络通信，我们需要对**SM2算法添加一些功能**。我进行了以下步骤：
 
-1.  修改所使用的椭圆曲线参数，将SM2的参数值替换为你想要使用的SM2曲线参数。
+1.  修改所使用的椭圆曲线参数，将SM2的参数值替换为想要使用的SM2曲线参数。
       
 2.  使用Python的socket模块实现网络通信。添加相应的代码来创建UDP客户端或服务器，并进行数据的发送和接收。注意在发送和接收数据时，要将数据进行适当的编码和解码。
   ```
@@ -268,7 +268,7 @@ B6: 计算1 = Hash(x2 || M' || y2)，其中Hash是一个哈希函数，x2和y2�
 ![图片](https://github.com/happyhippo111/No.61-/blob/main/project_16/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
 ## 🎖️project_17 比较Firefox和谷歌的记住密码插件的实现区别✔️
-report请见文件夹project_17内文件，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_17/%E6%AF%94%E8%BE%83Firefox%E5%92%8C%E8%B0%B7%E6%AD%8C%E7%9A%84%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8C%BA%E5%88%AB.md)<br>
+**report请见文件夹project_17内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_17/%E6%AF%94%E8%BE%83Firefox%E5%92%8C%E8%B0%B7%E6%AD%8C%E7%9A%84%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8C%BA%E5%88%AB.md)<br>
 
 ## 🎖️project_18 send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself✔️
 实现方式：<br>
@@ -284,7 +284,7 @@ report请见文件夹project_17内文件，[传送门](https://github.com/happyh
 
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E4%BA%A4%E6%98%93%E4%BF%A1%E6%81%AF.png)
 
-使用python自写脚本，可以解析获取该交易的详细信息<br>
+**使用python自写脚本**，可以解析获取该交易的详细信息<br>
 脚本运行结果如下：<br>
 
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%84%9A%E6%9C%AC%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
@@ -293,8 +293,8 @@ report请见文件夹project_17内文件，[传送门](https://github.com/happyh
 在tx里面可以看到交易的地址、id、哈希值，交易时间、交易金额、是否双花等信息<br>
 
 ## 🎖️project_19 forge a signature to pretend that you are Satoshi✔️
-要实现对中本聪的伪造签名，就要考虑对于ECDSA签名方案的伪造<br>
-这里我通过重组e的方式来实现伪造，思路如下：<br>
+要实现对中本聪的伪造签名，就要考虑**对于ECDSA签名方案的伪造**<br>
+这里我通过**重组e**的方式来实现伪造，思路如下：<br>
 R = H(m)/s * G + r/s * P<br>
 如果令 u = H(m)/s, v = r/s，<br>
 那么 R = uG + vP<br>
@@ -309,14 +309,16 @@ u'G + v'P = R'<br>
 ## 🎖️project_21 Schnorr Bacth✔️
 
 实现方式：<br>
-根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先实现了基本的Schnorr Signature，然后又实现了Schnorr Signature的批量验签。
+根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先**实现了基本的Schnorr Signature**，然后又**实现了Schnorr Signature的批量验签**。
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png)
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png)
 运行结果：<br>
 我分别用正常的Schnorr Signature单独验证签名9次，然后用批量验签同时对9个签名验证。**通过实验发现，批量验签可以比单独验签快近3倍。** <br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 ## 🎖️project_22 research report on MPT✔️
-report请见文件夹project_22内文件，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_22/MPT.md)
+**report请见文件夹project_22内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_22/MPT.md)
+
+项目任务量大，且实现难度较高，一路边学边做，实属不易。在尽力完成的同时，我的代码和报告还有很多需要完善的地方，恳请各位助教和老师谅解🥹🥹🥹
 
 
 
@@ -324,8 +326,3 @@ report请见文件夹project_22内文件，[传送门](https://github.com/happyh
 
 
 
-# 待完成
-
-修补project9
-
-开始比特币
