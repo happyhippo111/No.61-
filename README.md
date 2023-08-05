@@ -225,18 +225,18 @@ merkle树大概如下图所示：<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" width=700/>
 
 ## 🎖️project_12 verify the above pitfalls with proof-of-concept code✔️
-#### leaking k leads to leaking of private key
+### leaking k leads to leaking of private key
 实现方法：<br>
-
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%861.png" width = "500" ><br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/leaking_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 
-#### Reusing k leads to leaking of d
+### Reusing k leads to leaking of d
 实现方法：<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%862.png" width = "800" ><br>
 运行结果：<br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/reusing_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
-#### reusing k by different users
+### reusing k by different users
 实现方法：<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%863.png" width = "800" ><br>
 运行结果：<br>
