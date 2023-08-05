@@ -1,10 +1,10 @@
 # No.61-孔婧202122202212
 **各位助教和老师，你们好！！！欢迎光临我的代码仓🤩**<br>
-我是21级网安1班孔婧，本次实验未组队，共完成16个，**以下所有项目均为本人独立完成**💪💪💪<br>
+我是21级网安1班孔婧，本次实验未组队，共完成17个，**以下所有项目均为本人独立完成**💪💪💪<br>
 小组分工表<br>
 | 组员  | 名字 | 学号         | 负责项目                                        |
 | ----- | ---- | ------------ | ----------------------------------------------- |
-| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、11、15、16、17、18、19、21、22 |
+| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、11、12、15、16、17、18、19、21、22 |
 
 
 项目明细：
@@ -21,7 +21,7 @@
 | 9    | AES / SM4 software implementation                            | √        |
 | 10   | report on the application of this deduce technique in Ethereum with ECDSA | √        |
 | 11   | impl sm2 with RFC6979                                        |   √       |
-| 12   | verify the above pitfalls with proof-of-concept code         |          |
+| 12   | verify the above pitfalls with proof-of-concept code         |   √       |
 | 13   | Implement the above ECMH scheme                              |          |
 | 14   | Implement a PGP scheme with SM2                              |          |
 | 15   | implement sm2 2P sign with real network communication        | √        |
@@ -164,7 +164,7 @@ merkle树大概如下图所示：<br>
 
 ### AES实现✔️
 实现方式:<br>
-<img src=" https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG" width=500/>
+![Alt](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/IMG_2377(20230727-004119).PNG =500)
 根据AES加密流程，使用C++完成<br>
 运行结果：![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_09/AES/%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95.png)
 ### SM4实现✔️
@@ -223,6 +223,25 @@ merkle树大概如下图所示：<br>
 </figure>
 运行结果：<br>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_11/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" width=700/>
+
+## 🎖️project_12 verify the above pitfalls with proof-of-concept code✔️
+#### leaking k leads to leaking of private key
+实现方法：<br>
+![Alt](https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%861.png =600)
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/leaking_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
+#### Reusing k leads to leaking of d
+实现方法：<br>
+![Alt]https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%862.png =900)
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/reusing_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+#### reusing k by different users
+实现方法：<br>
+![Alt](https://github.com/happyhippo111/No.61-/blob/main/project_12/%E5%8E%9F%E7%90%863.png =900)
+运行结果：<br>
+![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_12/two_user_same_k%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
+
 
 
 
@@ -319,7 +338,8 @@ u'G + v'P = R'<br>
 ## 🎖️project_22 research report on MPT✔️
 **report请见文件夹project_22内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_22/MPT.md)
 
-项目任务量大，且实现难度较高，一路边学边做，实属不易。在尽力完成的同时，我的代码和报告还有很多需要完善的地方，恳请各位助教和老师谅解🥹🥹🥹
+项目任务量大，且实现难度较高，一路边学边做，实属不易<br>
+在尽力完成的同时，我的代码和报告还有很多需要完善的地方，恳请各位助教和老师谅解🥹🥹🥹
 
 
 
