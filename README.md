@@ -293,16 +293,13 @@ B6: 计算1 = Hash(x2 || M' || y2)，其中Hash是一个哈希函数，x2和y2�
 ## 🎖️project_18 send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself✔️
 实现方式：<br>
 生成比特币测试地址，记录图中出现的地址和私钥：<br>
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E6%B5%8B%E8%AF%95%E7%89%88%E5%9C%B0%E5%9D%80.png)
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_18/%E6%B5%8B%E8%AF%95%E7%89%88%E5%9C%B0%E5%9D%80.png" width = "700" ><br>
+![Alt text]()
 登录比特币的测试币水龙头，获取一定数量的测试用币<br>
-
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%8E%B7%E5%8F%96%E6%B5%8B%E8%AF%95%E5%B8%81.png)
-
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%8E%B7%E5%8F%96%E6%B5%8B%E8%AF%95%E5%B8%81.png" width = "700" ><br>
 进入[网站](https://live.blockcypher.com/)，查询我的账户交易信息和刚刚的交易记录
-
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%B4%A6%E6%88%B7%E8%AE%B0%E5%BD%95.png)
-
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_18/%E4%BA%A4%E6%98%93%E4%BF%A1%E6%81%AF.png)
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_18/%E8%B4%A6%E6%88%B7%E8%AE%B0%E5%BD%95.png" width = "700" ><br>
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_18/%E4%BA%A4%E6%98%93%E4%BF%A1%E6%81%AF.png" width = "700" ><br>
 
 **使用python自写脚本**，可以解析获取该交易的详细信息<br>
 脚本运行结果如下：<br>
