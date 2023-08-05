@@ -326,15 +326,19 @@ u'G + v'P = R'<br>
 ## 🎖️project_21 Schnorr Bacth✔️
 
 实现方式：<br>
-根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先**实现了基本的Schnorr Signature**，然后又**实现了Schnorr Signature的批量验签**。
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png)
-![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png)
+根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先**实现了基本的Schnorr Signature**，然后又**实现了Schnorr Signature的批量验签**。<br>
+<figure>
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png" width=600/>
+<img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png" width=600/>
+</figure>
 运行结果：<br>
 我分别用正常的Schnorr Signature单独验证签名9次，然后用批量验签同时对9个签名验证。**通过实验发现，批量验签可以比单独验签快近3倍。** <br>
 ![Alt text](https://github.com/happyhippo111/No.61-/blob/main/project_21/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png)
 ## 🎖️project_22 research report on MPT✔️
 **report请见文件夹project_22内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_22/MPT.md)
 
+
+## 
 项目任务量大，且实现难度较高，一路边学边做，实属不易<br>
 在尽力完成的同时，我的代码和报告还有很多需要完善的地方，恳请各位助教和老师谅解🥹🥹🥹
 
