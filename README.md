@@ -22,7 +22,6 @@
 | 17   | 比较Firefox和谷歌的记住密码插件的实现区别                    | √        |
 | 18   | send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself | √        |
 | 19   | forge a signature to pretend that you are Satoshi            | √        |
-| 20   | 与project13重复，删去                                        |          |
 | 21   | Schnorr Bacth                                                | √        |
 | 22   | research report on MPT                                       | √        |
 
