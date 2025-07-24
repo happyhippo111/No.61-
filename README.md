@@ -1,14 +1,6 @@
-# No.61-孔婧202122202212
-**各位助教和老师，你们好！！！欢迎光临我的代码仓🤩**<br>
-我是21级网安1班孔婧，本次实验未组队，共完成17个，**以下所有项目均为本人独立完成**💪💪💪<br>
-小组分工表<br>
-| 组员  | 名字 | 学号         | 负责项目                                        |
-| ----- | ---- | ------------ | ----------------------------------------------- |
-| 组员1 | 孔婧 | 202122202212 | 1、2、3、4、5、8、9、10、11、12、15、16、17、18、19、21、22 |
-
-
+##本科期间尝试的一些密码学project
 项目明细：
-| 编号 | 项目要求                                                     | 完成情况 |
+| 编号 | 项目                                                   | 完成情况 |
 | ---- | ------------------------------------------------------------ | -------- |
 | 1    | implement the naïve birthday attack of reduced SM3           | √        |
 | 2    | implement the Rho method of reduced SM3                      | √        |
@@ -32,8 +24,6 @@
 | 20   | 与project13重复，删去                                        |          |
 | 21   | Schnorr Bacth                                                | √        |
 | 22   | research report on MPT                                       | √        |
-
-❗❗❗汇总的report如下❗❗❗<br>
 
 ## 🎖️project_01 implement the naïve birthday attack of reduced SM3 ✔️
 生日攻击是一种利用生日悖论的攻击方式，针对哈希算法。生日悖论指的是，随着数据量的增加，出现两个不同输入具有相同哈希值的概率逐渐增加。在SM3生日攻击中，我会生成一系列随机字符串，并计算其SM3哈希值的前n位。通过大量的随机字符串生成和比较，试图找到两个不同的字符串，其前n位哈希值相同，从而达到生日攻击的目的。<br>
@@ -158,7 +148,7 @@ merkle树大概如下图所示：<br>
 >uint8x16_t vaesmcq_u8(uint8x16_t data);<br>
 
 实现方式：该项目使用C语言编程完成<br>
-因为没有ARM架构的电脑，所以难以跑出预期结果，请各位老师和助教见谅😭😭😭<br>
+因为没有ARM架构的电脑，所以难以跑出预期结果
 
 ## 🎖️project_09 AES / SM4 software implementation✔️
 
@@ -326,7 +316,7 @@ u'G + v'P = R'<br>
 ## 🎖️project_21 Schnorr Bacth✔️
 
 实现方式：<br>
-根据老师上课所讲的PPT，我使用了secp256k1.py作为库，在此基础上用python编程首先**实现了基本的Schnorr Signature**，然后又**实现了Schnorr Signature的批量验签**。<br>
+secp256k1.py作为库，在此基础上用python编程首先**实现了基本的Schnorr Signature**，然后又**实现了Schnorr Signature的批量验签**。<br>
 <figure>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/SchnorrSignature.png" width=600/>
 <img src="https://github.com/happyhippo111/No.61-/blob/main/project_21/BatchVerification.png" width=600/>
@@ -338,10 +328,6 @@ u'G + v'P = R'<br>
 ## 🎖️project_22 research report on MPT✔️
 **report请见文件夹project_22内文件**，[传送门](https://github.com/happyhippo111/No.61-/blob/main/project_22/MPT.md)
 
-
-## 
-项目任务量大，且实现难度较高，一路边学边做，实属不易<br>
-在尽力完成的同时，我的代码和报告还有很多需要完善的地方，恳请各位助教和老师谅解🥹🥹🥹
 
 
 
